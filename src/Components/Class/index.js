@@ -8,7 +8,7 @@ import axios from 'axios';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 
 
-
+const class_url = `https://school-backend-cy1l.onrender.com`
 
 
 const ClassComponent = () => {
@@ -19,7 +19,7 @@ const ClassComponent = () => {
   const [teachers, setTeachers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/classes')
+    axios.get(`${class_url}/classes`)
       .then(response => {
         setClasses(response.data);
       })
@@ -27,7 +27,7 @@ const ClassComponent = () => {
         console.error(error);
       });
 
-    axios.get('http://localhost:5000/teachers')
+    axios.get(`${class_url}/teachers`)
       .then(response => {
         setTeachers(response.data);
       })
@@ -46,7 +46,7 @@ const ClassComponent = () => {
 
     if (editing) {
       console.log(newClass)
-      axios.put(`http://localhost:5000/classes/${newClass._id}`, newClass)
+      axios.put(`${class_url}/classes/${newClass._id}`, newClass)
         .then(response => {
           setClasses(classes.map((classItem, index) => index === currentIndex ? response.data : classItem));
           setEditing(false);
@@ -57,7 +57,7 @@ const ClassComponent = () => {
         });
     } else {
       console.log(newClass)
-      axios.post('http://localhost:5000/classes', newClass)
+      axios.post(`${class_url}/classes`, newClass)
         .then(response => {
           setClasses([...classes, response.data]);
           setNewClass({ className: '', year: '',  teacher: '', studentFees: '' });
@@ -69,7 +69,7 @@ const ClassComponent = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/classes/${id}`)
+    axios.delete(`${class_url}/classes/${id}`)
       .then(response => {
         setClasses(classes.filter((classItem) => classItem._id !== id));
       })
@@ -152,7 +152,7 @@ const ClassComponent = () => {
           type="number"
           value={newClass.studentFees}
           onChange={(event) => setNewClass({ ...newClass, studentFees: event.target.value })}
-          placeholder="Student Fees"
+          placeholder="Class Fees"
           className="input-field"
         />
         <button type="submit" className="submit-button">

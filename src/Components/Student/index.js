@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
+const class_url = `'https://school-backend-cy1l.onrender.com`
+
 const StudentComponent = () => {
   const [students, setStudents] = useState([]);
   const [newStudent, setNewStudent] = useState({ 
@@ -23,7 +25,7 @@ const StudentComponent = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/students');
+        const response = await axios.get('https://school-backend-cy1l.onrender.com/students');
         setStudents(response.data);
       } catch (error) {
         setError(error.message);
@@ -35,7 +37,7 @@ const StudentComponent = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/classes');
+        const response = await axios.get('https://school-backend-cy1l.onrender.com/classes');
         setClasses(response.data);
       } catch (error) {
         setError(error.message);
@@ -48,11 +50,11 @@ const StudentComponent = () => {
     event.preventDefault();
     try {
       if (editing) {
-        const res = await axios.put(`http://localhost:5000/students/${currentStudent._id}`, newStudent);
+        const res = await axios.put(`https://school-backend-cy1l.onrender.com/students/${currentStudent._id}`, newStudent);
         //setStudents([...students, res.data]);
         setEditing(false);
       } else {
-        const response = await axios.post('http://localhost:5000/students', newStudent);
+        const response = await axios.post('https://school-backend-cy1l.onrender.com/students', newStudent);
         setStudents([...students, response.data]);
       }
       setNewStudent({ 
@@ -87,7 +89,7 @@ const StudentComponent = () => {
 
   const handleDelete = async (student) => {
     try {
-      await axios.delete(`http://localhost:5000/students/${student._id}`);
+      await axios.delete(`https://school-backend-cy1l.onrender.com/students/${student._id}`);
       setStudents(students.filter((s) => s._id !== student._id));
     } catch (error) {
       setError(error.message);

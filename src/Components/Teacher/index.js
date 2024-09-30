@@ -9,7 +9,7 @@ import SharedComponent from '../SharedComp/index'
 const teacher_headers = ['#','Name','Gender','Dob','Contact Details','Salary','Assigned Class','Actions']
 
 
-
+const class_url = 'https://school-backend-cy1l.onrender.com'
 
 
 const TeacherComponent = () => {
@@ -27,7 +27,7 @@ const TeacherComponent = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/teachers')
+    axios.get('https://school-backend-cy1l.onrender.com/teachers')
       .then(response => {
         setTeachers(response.data);
       })
@@ -35,7 +35,7 @@ const TeacherComponent = () => {
         console.error(error);
       });
 
-    axios.get('http://localhost:5000/classes')
+    axios.get('https://school-backend-cy1l.onrender.com/classes')
       .then(response => {
         setClasses(response.data);
       })
@@ -47,7 +47,7 @@ const TeacherComponent = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isEditing) {
-      axios.put(`http://localhost:5000/teachers/${selectedTeacher._id}`, newTeacher)
+      axios.put(`https://school-backend-cy1l.onrender.com/teachers/${selectedTeacher._id}`, newTeacher)
         .then(response => {
           setTeachers(teachers.map((teacher) => teacher._id === selectedTeacher._id ? response.data : teacher));
           setNewTeacher({
@@ -64,7 +64,7 @@ const TeacherComponent = () => {
           console.error(error);
         });
     } else {
-      axios.post('http://localhost:5000/teachers', newTeacher)
+      axios.post('https://school-backend-cy1l.onrender.com/teachers', newTeacher)
         .then(response => {
           setTeachers([...teachers, response.data]);
           setNewTeacher({
@@ -83,7 +83,7 @@ const TeacherComponent = () => {
   };
 
   const handleDelete = (teacherId) => {
-    axios.delete(`http://localhost:5000/teachers/${teacherId}`)
+    axios.delete(`https://school-backend-cy1l.onrender.com/teachers/${teacherId}`)
       .then(() => {
         setTeachers(teachers.filter((teacher) => teacher._id !== teacherId));
       })
