@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/school-managent-App/static/css/main.d5c6b83f.css",
+    "main.js": "/school-managent-App/static/js/main.7a4afd97.js",
+    "static/js/453.8ab44547.chunk.js": "/school-managent-App/static/js/453.8ab44547.chunk.js",
+    "static/media/students.png": "/school-managent-App/static/media/students.4cc3eda4bcfd01d879de.png",
+    "index.html": "/school-managent-App/index.html",
+    "main.d5c6b83f.css.map": "/school-managent-App/static/css/main.d5c6b83f.css.map",
+    "main.7a4afd97.js.map": "/school-managent-App/static/js/main.7a4afd97.js.map",
+    "453.8ab44547.chunk.js.map": "/school-managent-App/static/js/453.8ab44547.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5c6b83f.css",
+    "static/js/main.7a4afd97.js"
+  ]
+}
